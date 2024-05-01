@@ -1,0 +1,25 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80" # Mapping port 80 inside container to port 8000 on host
+    volumes:
+      - .:/var/www/html # Mapping current directory to /var/www/html inside container
+    depends_on:
+      - database
+  database:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: authentication-database-1
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 1
+      MYSQL_ROOT_PASSWORD: 1
+    volumes:
+      - dbdata:/var/lib/mysql
+volumes:
+  dbdata:
