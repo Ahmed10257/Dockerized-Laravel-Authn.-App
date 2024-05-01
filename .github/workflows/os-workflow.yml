@@ -26,7 +26,7 @@ jobs:
       - name: Build Docker Image
         uses: mr-smithers-excellent/docker-build-push@v6
         with:
-          image: dockerizedlaravelapp
+          image: ahmed10257/dockerizedlaravelapp
           registry: docker.io
           dockerfile: Dockerfile
           username: "${{ secrets.hub_email }}"
